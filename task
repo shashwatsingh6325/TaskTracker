@@ -1,0 +1,16 @@
+from flask import Blueprint, render_template, request, redirect, url_for
+from tasks.models import Task, tasks
+
+tasks = Blueprint("tasks", __name__)
+
+@tasks.route("/")
+def task_list():
+    return render_template("index.html", tasks=tasks)
+
+@tasks.route("/add_task", methods=["POST"])
+def add_task():
+    title = request.form.get("title")
+    description = request.form.get("description")
+    new_task = Task(title, description)
+    tasks.append(new_task)
+    return redirect(url_for("tasks.task_list"))
