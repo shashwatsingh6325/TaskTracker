@@ -1,0 +1,9 @@
+pip install Flask
+community_task_tracker/
+├── app.py
+├── templates/
+│   ├── index.html
+├── tasks/
+│   ├── __init__.py
+│   ├── models.py
+│   ├── routes.py
